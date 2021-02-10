@@ -16,7 +16,7 @@ We'll soon see, however, that there is more going on. In this lesson, we're
 going to briefly explore what's really going on with Arrays and Objects behind
 scenes. 
 
-> **Note:** Before we dive in too deep - some of the topics we will touch on in
+> **Note:** Before we dive in too deep — some of the topics we will touch on in
 > this lesson will be covered in more depth later on in this course. Do not
 > feel that you need to fully understand concepts like context and prototypes. As
 > you've already proven, data structures can be useful to us, even if we haven't fully
@@ -45,12 +45,12 @@ phrases.time()
 ```
 
 Here, we've stored a function in an Object, and then called that function with
-`phrases.time()`. Let's break that down - we first call the `phrases` object,
+`phrases.time()`. Let's break that down — we first call the `phrases` object,
 then a `.`, a dot. This is followed by the key, `time`. This key points to a
-value - a function expression. Adding parentheses, `()` executes that function
+value — a function expression. Adding parentheses, `()` executes that function
 expression.
 
-Now, hold on a moment - we've seen this syntax before, but with Arrays:
+Now, hold on a moment — we've seen this syntax before, but with Arrays:
 
 ```js
 const listOfGoodDogs = ["Peach", "Harpo", "Emma"]
@@ -71,7 +71,7 @@ other things. In the first code snippet, we assigned a `const`, `currentTime`, t
 called `getHours()` and `getMinutes()` on it. In the second code snippet, we called `log()` as
 part of `console`.
 
-These are all JavaScript Objects - [Arrays][arrays] and other things like [`Date`][date] are Objects...
+These are all JavaScript Objects — [Arrays][arrays] and other things like [`Date`][date] are Objects...
 even [_Strings_][strings] are Objects, which is why we can do things like `"hello".slice(1)`.
 Functions... are also Objects in JavaScript if things weren't confusing enough already.
 
@@ -79,7 +79,7 @@ As it turns out, Objects are a bit more complex than we originally presented!
 
 ## A Deeper Look at Objects
 
-Before we continue, we want to be clear in the language we use going forward - so far we've
+Before we continue, we want to be clear in the language we use going forward — so far we've
 talked about key/value pairs in general, but they're actually referred to as different things
 depending on what they store. Key/value pairs like `greeting` and `time` are also referred to as
 _properties_ of an Object. Properties that store a function expression as a value, like `time`,
@@ -130,7 +130,7 @@ We can see here that the code above results in a `phrases` object that behaves l
 the previous examples. You probably notice some things that are unfamiliar, though.
 
 Note that instead of using key/value pairs to set properties, we've used something
-else - `this` followed by the dot notation we've seen. We will go into greater depth
+else — `this` followed by the dot notation we've seen. We will go into greater depth
 on `this` and context later. Take note that in our example, `this` seems to be written
 like it is an Object itself; the properties we're assigning, `greeting` and `time`,
 are part of `this`.
@@ -138,7 +138,7 @@ are part of `this`.
 Another noticeable difference is that `PhraseObjectConstructor()` does not _return_
 anything explicitly (the only `return` is inside the `time` method). However, when we
 run `new PhraseObjectConstructor("Harold")`, we do assign _something_ to the `phrases` variable
-- _an Object_. 
+— _an Object_. 
 
 The essential bit in this puzzle is [`new`][new]. Adding `new` before
 `PhraseObjectConstructor("Harold")` tells JavaScript to do a couple of things:
@@ -241,7 +241,7 @@ Object -> PhraseObjectConstructor -> individual object
 
 > **Note:** Remember, do not be discouraged if these conceptst are confusing. They are most definitely confusing and will remain that way for a bit, but that is okay. As you progress through the JavaScript content, you'll see more examples of `this` and prototypes.
 
-## Conclusion - The Power of Objects
+## Conclusion — The Power of Objects
 
 Let's review what we've found out so far about Objects. 
 
@@ -278,7 +278,7 @@ phrases2.greeting
 These objects can store unique information in their properties, but share a similar structure and have both inherited the constructor function's prototype.
 
 With this knowledge, we encourage you take a look back at some of the JavaScript you've used so far. Did you know you can create new Arrays with `new Array()`? Can you guess what is happening when this command is run? What about other
-examples we've seen? `new Date()` is an interesting example - it _returns a string_ when used, but it **also** can be used to create a `Date` object with unique properties like `getHours` and `getMinutes`.
+examples we've seen? `new Date()` is an interesting example — it _returns a string_ when used, but it **also** can be used to create a `Date` object with unique properties like `getHours` and `getMinutes`.
 
 Things may still seem mysterious, but keep these ideas in mind as you move through the remaining content. You'll see
 these concepts appear again, but they will hopefully not be so unfamiliar!
