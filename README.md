@@ -33,13 +33,13 @@ const phrases = {
   greeting: "Hello there!",
   time: () => {
     const currentTime = new Date();
-    return `The time is ${currentTime.getHours()}:${currentTime.getMinutes()}`
+    return `The time is ${currentTime.getHours()}:${currentTime.getMinutes()}`;
   }
 }
 
-phrases.greeting
+phrases.greeting;
 // => "Hello there!"
-phrases.time()
+phrases.time();
 // => "The time is 16:51" (or whatever time it is currently on a 24-hour clock)
 ```
 
@@ -52,9 +52,9 @@ expression.
 Now, hold on a moment — we've seen this syntax before, but with Arrays:
 
 ```js
-const listOfGoodDogs = ["Peach", "Harpo", "Emma"]
+const listOfGoodDogs = ["Peach", "Harpo", "Emma"];
 
-listOfGoodDogs.map((dog) => console.log(dog))
+listOfGoodDogs.map((dog) => console.log(dog));
 // LOG: Peach
 // LOG: Harpo
 // LOG: Emma
@@ -96,7 +96,7 @@ const phrases = {
   greeting: "Hello there!",
   time: () => {
     const currentTime = new Date();
-    return `The time is ${currentTime.getHours()}:${currentTime.getMinutes()}`
+    return `The time is ${currentTime.getHours()}:${currentTime.getMinutes()}`;
   }
 }
 ```
@@ -119,12 +119,12 @@ function PhraseObjectConstructor(name) {
   };
 }
 
-const phrases = new PhraseObjectConstructor("Harold")
+const phrases = new PhraseObjectConstructor("Harold");
 
 
-phrases.greeting
+phrases.greeting;
 // => "Hello there Harold!"
-phrases.time()
+phrases.time();
 // => "The time is 17:30"
 ```
 
@@ -141,7 +141,7 @@ seems to be written like it is an Object itself; the properties we're assigning,
 Another noticeable difference is that `PhraseObjectConstructor()` does not
 _return_ anything explicitly (the only `return` is inside the `time` method).
 However, when we run `new PhraseObjectConstructor("Harold")`, we do assign
-_something_ to the `phrases` variable — _an Object_. 
+_something_ to the `phrases` variable — _an Object_.
 
 The essential bit in this puzzle is [`new`][new]. Adding `new` before
 `PhraseObjectConstructor("Harold")` tells JavaScript to do a couple of things:
@@ -164,11 +164,11 @@ following plain object:
 const example = {
   name: "Henry",
   test: function() {
-    return this
+    return this;
   }
 }
 
-example.test()
+example.test();
 // => {name: "Henry", sayName: ƒ}
 ```
 
@@ -187,11 +187,11 @@ themselves.
 const example = {
   name: "Henry",
   sayName: function() {
-    return `My name is ${this.name}`
+    return `My name is ${this.name}`;
   }
 }
 
-example.sayName()
+example.sayName();
 // => "My name is Henry"
 ```
 
@@ -199,7 +199,7 @@ Going back to `new`, when we call `new PhraseObjectConstructor("Harold")`,
 `this` gets bound to the newly created object, turning `this.greeting` and
 `this.time` into properties for that object.
 
-## A Brief Intro to Prototypal Inheritance 
+## A Brief Intro to Prototypal Inheritance
 
 We mentioned that when using `new`, a property `__proto__` is added to the newly
 created object. `__proto__` refers to an Object's [prototype][]. Every
@@ -220,11 +220,11 @@ many Objects in JavaScript? Once we create an array, we can access methods on
 that array to do things.
 
 ```js
-const exampleArray = [1, 2, 3]
+const exampleArray = [1, 2, 3];
 
-exampleArray.pop()
+exampleArray.pop();
 // => 3
-exampleArray
+exampleArray;
 // => [1, 2]
 ```
 
@@ -263,7 +263,7 @@ Object -> PhraseObjectConstructor -> individual object
 
 ## Conclusion — The Power of Objects
 
-Let's review what we've found out so far about Objects. 
+Let's review what we've found out so far about Objects.
 
 - We know they can contain properties
 - We know `this` can be used in an object to reference itself
@@ -296,16 +296,16 @@ function PhraseObjectConstructor(name) {
   this.greeting = `Hello there ${name}!`;
   this.time = () => {
     const currentTime = new Date();
-    return `The time is ${currentTime.getHours()}:${currentTime.getMinutes()}`
+    return `The time is ${currentTime.getHours()}:${currentTime.getMinutes()}`;
   };
 }
 
-const phrases1 = new PhraseObjectConstructor("Harold")
-const phrases2 = new PhraseObjectConstructor("Hank")
+const phrases1 = new PhraseObjectConstructor("Harold");
+const phrases2 = new PhraseObjectConstructor("Hank");
 
-phrases1.greeting
+phrases1.greeting;
 // => "Hello there Harold!"
-phrases2.greeting
+phrases2.greeting;
 // => "Hello there Hank!"
 ```
 
@@ -329,7 +329,7 @@ will hopefully not be so unfamiliar!
 - [Object Prototypes][prototype]
 - [`this`][this]
 
-[new]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/new 
+[new]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/new
 [prototype]: https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Object_prototypes
 [this]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this
 [strings]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String
