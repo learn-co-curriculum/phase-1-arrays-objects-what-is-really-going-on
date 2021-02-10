@@ -62,7 +62,7 @@ listOfGoodDogs.map((dog) => console.log(dog))
 ```
 
 Here, we've called `map` as a part of `listOfGoodDogs` and passed in a callback function
-to log each element in the Array. Like `time` in the previous example, `map` is acting like
+to log each element in the Array. As with `time` in the previous example, `map` is acting like
 an Object key pointing to a function expression.
 
 Why does this work? Well... it is because Arrays _are_ Objects in JavaScript. Lots of things
@@ -148,7 +148,7 @@ The essential bit in this puzzle is [`new`][new]. Adding `new` before
   belong to _this_ new Object
 - It adds a new property, `__proto__` to the Object.
 
-The first action is somethine we're familiar with, less so the other two. We'll discuss
+The first action is something we're familiar with, less so the other two. We'll discuss
 both then check out an example of why this behavior is useful.
 
 ## A Brief Intro to `this`
@@ -281,7 +281,7 @@ With this knowledge, we encourage you take a look back at some of the JavaScript
 examples we've seen? `new Date()` is an interesting example - it _returns a string_ when used, but it **also** can be used to create a `Date` object with unique properties like `getHours` and `getMinutes`.
 
 Things may still seem mysterious, but keep these ideas in mind as you move through the remaining content. You'll see
-these conoceepts appear again, but they will hopefully not be so unfamiliar!
+these concepts appear again, but they will hopefully not be so unfamiliar!
 
 ## Resources
 
