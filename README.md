@@ -3,7 +3,10 @@
 ## Learning Goals
 
 - Recognize Arrays are Objects
-- Objects in JavaScript can store all sorts of values
+- Recognize that many other things in JavaScript are Objects
+- Take a deeper look at Objects
+- Introduce `this`
+- Introduce Prototypal Inheritance
 
 ## Introduction
 
@@ -13,7 +16,7 @@ data to represent all sorts of things using nested data structures.
 
 We'll soon see, however, that there is more going on. In this lesson, we're
 going to briefly explore what's really going on with Arrays and Objects behind
-scenes.
+the scenes.
 
 > **Note:** Before we dive in too deep — some of the topics we will touch on in
 > this lesson will be covered in more depth later on in this course. Do not feel
@@ -24,9 +27,9 @@ scenes.
 ## Arrays are... Objects in JavaScript?
 
 If you recall from the previous lessons on functions, in JavaScript, functions
-are considered _first-class_, which means, like data values, they can be used as
-arguments in other functions and assigned to variables. It also means you can
-store functions _in_ Arrays and Objects. For example:
+are considered _first-class_. This means that, like data values, they can be
+used as arguments in other functions and assigned to variables. It also means
+you can store functions _in_ Arrays and Objects. For example:
 
 ```js
 const phrases = {
@@ -44,12 +47,12 @@ phrases.time();
 ```
 
 Here, we've stored a function in an Object, and then called that function with
-`phrases.time()`. Let's break that down — we first call the `phrases` object,
-then a `.`, a dot. This is followed by the key, `time`. This key points to a
-value — a function expression. Adding parentheses, `()` executes that function
+`phrases.time()`. Let's break that down — we first call the `phrases` object.
+This is followed by a dot, `.`, then the key `time`. This key points to a value
+— a function expression. Adding parentheses, `()`, executes that function
 expression.
 
-Now, hold on a moment — we've seen this syntax before, but with Arrays:
+Now, hold on a moment — we've seen this dot syntax before, but with Arrays:
 
 ```js
 const listOfGoodDogs = ["Peach", "Harpo", "Emma"];
@@ -60,9 +63,10 @@ listOfGoodDogs.map((dog) => console.log(dog));
 // LOG: Emma
 ```
 
-Here, we've called `map` as a part of `listOfGoodDogs` and passed in a callback
-function to log each element in the Array. As with `time` in the previous
-example, `map` is acting like an Object key pointing to a function expression.
+Here, we've called `map` on our array, `listOfGoodDogs`, and passed in a
+callback function to log each element in the Array. As with `time` in the
+previous example, `map` is acting like an Object key pointing to a function
+expression.
 
 Why does this work? Well... it is because Arrays _are_ Objects in JavaScript.
 Lots of things are Objects, actually. Notice in the two previous examples, we
@@ -85,8 +89,8 @@ so far we've talked about key/value pairs in general, but they're actually
 referred to as different things depending on what they store. Key/value pairs
 like `greeting` and `time` are also referred to as _properties_ of an Object.
 Properties that store a function expression as a value, like `time`, are
-referred to as _methods_ of the object. The `phrases` object, then, has two
-properties we've defined, one of which is a method.
+referred to as _methods_ of the object. The `phrases` object we've defined,
+then, has two properties, one of which is a method.
 
 We've gotten used to creating objects using the object literal notation, using
 curly braces to wrap comma separated properties:
@@ -102,7 +106,7 @@ const phrases = {
 ```
 
 This way of creating Objects is often preferred due to its simplicity, but there
-are other ways we can create Objects
+are other ways we can create Objects.
 
 ### Creating an Object Using the Constructor Function
 
@@ -129,14 +133,14 @@ phrases.time();
 ```
 
 We can see here that the code above results in a `phrases` object that behaves
-like the previous examples. You probably notice some things that are unfamiliar,
-though.
+like the previous examples, with `greeting` and `time` properties. You probably
+notice some things that are unfamiliar, though.
 
 Note that instead of using key/value pairs to set properties, we've used
 something else — `this` followed by the dot notation we've seen. We will go into
-greater depth on `this` and context later. Take note that in our example, `this`
-seems to be written like it is an Object itself; the properties we're assigning,
-`greeting` and `time`, are part of `this`.
+greater depth on `this` and context later. For now, take note that in our
+example, `this` seems to be written like it is an Object itself; the properties
+we're assigning, `greeting` and `time`, are part of `this`.
 
 Another noticeable difference is that `PhraseObjectConstructor()` does not
 _return_ anything explicitly (the only `return` is inside the `time` method).
@@ -146,9 +150,9 @@ _something_ to the `phrases` variable — _an Object_.
 The essential bit in this puzzle is [`new`][new]. Adding `new` before
 `PhraseObjectConstructor("Harold")` tells JavaScript to do a couple of things:
 
-- It creates a basic Object (which gets assigned to the `phrases` variable)
+- It creates a basic Object (which gets assigned to the `phrases` variable).
 - It binds `this` to the newly created Object. The properties defined in the
-  function now belong to _this_ new Object
+  function now belong to _this_ new Object.
 - It adds a new property, `__proto__` to the Object.
 
 The first action is something we're familiar with, less so the other two. We'll
@@ -169,16 +173,16 @@ const example = {
 }
 
 example.test();
-// => {name: "Henry", sayName: ƒ}
+// => {name: "Henry", test: ƒ}
 ```
 
 If you paste the above into your browser console and run `example.test()`, you
 will get the `example` object in return!
 
-You may notice we're now using an arrow function here. If you replace `test`
+You may notice we're not using an arrow function here. If you replace `test`
 with an arrow function, you'll get a different value for `this`. The reason is
-beyond the scope of this lesson and is related to how `this` behaves in arrow
-functions.
+beyond the scope of this lesson and is related to how context is determined in
+arrow functions.
 
 `this` can be very useful since we can use it to reference objects from inside
 themselves.
@@ -207,13 +211,13 @@ JavaScript Object has a prototype property, though it isn't typically displayed
 when logging.
 
 The prototype contains _inherited_ properties, often methods. When we use a
-constructor function to create objects, and object created will inherit
-prototype properties from the constructor function (remember that it is an
-Object). The constructor function has a prototype that it inherited, as well. In
-this way, some shared properties are able to be 'passed down' from Object to
-Object. In this way, Objects create a prototype _chain_. Properties of an Object
-that are in the prototype can be accessed using the `__proto__` property of an
-individual object.
+constructor function to create objects, the created object will inherit
+prototype properties from the constructor function (remember that it too is an
+Object). The constructor function has a prototype that _it_ inherited, as well.
+In this way, some shared properties are able to be 'passed down' from Object to
+Object. This is known as a prototype _chain_. Properties of an Object that are
+in the prototype can be accessed using the `__proto__` property of an individual
+object.
 
 Remember when we mentioned that Arrays are a _type_ of Object and that there are
 many Objects in JavaScript? Once we create an array, we can access methods on
@@ -256,10 +260,10 @@ prototype is passed to every object created. This prototype contains its own
 Object -> PhraseObjectConstructor -> individual object
 ```
 
-> **Note:** Remember, do not be discouraged if these conceptst are confusing.
-> They are most definitely confusing and will remain that way for a bit, but
-> that is okay. As you progress through the JavaScript content, you'll see more
-> examples of `this` and prototypes.
+> **Note:** Remember, do not be discouraged if you find these concepts
+> confusing. They are most definitely confusing and will remain that way for a
+> bit, but that is okay. As you progress through the JavaScript content, you'll
+> see more examples of `this` and prototypes.
 
 ## Conclusion — The Power of Objects
 
@@ -267,14 +271,15 @@ Let's review what we've found out so far about Objects.
 
 - We know they can contain properties
 - We know `this` can be used in an object to reference itself
-- We know Objects can inherit shared properties from other Objects via the prototype chain
+- We know Objects inherit shared properties from other Objects via the prototype
+  chain
 - We know many things in JavaScript are actually Objects
 - There are multiple ways to create Objects
 
-You may occassionally find programmers debating online as to whether or not
+You may occasionally find programmers debating online as to whether or not
 JavaScript is an object-oriented language. Some resources will refer to
 JavaScript as having 'object-oriented capabilities' but not as
-'object-oriented.' This is technically true, as JavaScriptt doesn't strictly
+'object-oriented.' This is technically true, as JavaScript doesn't strictly
 adhere to some specific design principles related to object-orientation.
 However, we'll soon see that you can absolutely use JavaScript as you would use
 other object-oriented languages.
@@ -286,10 +291,10 @@ referred to as 'instances.' Instances are individual copies of a class that can
 each carry unique information, but contain shared properties that were defined
 on the class.
 
-Does this seem familiar? Sounds very similar to what we've dicsused regarding
+Does this seem familiar? Sounds very similar to what we've discussed regarding
 constructor functions and prototypal inheritance. When we create a constructor
 function, we are essentially creating a template that can be used to generate
-new, indivdual objects.
+new, individual objects.
 
 ```js
 function PhraseObjectConstructor(name) {
