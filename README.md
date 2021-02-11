@@ -106,7 +106,9 @@ const phrases = {
 ```
 
 This way of creating Objects is often preferred due to its simplicity, but there
-are other ways we can create Objects.
+are other ways we can create Objects. Say, for example, that we want to be able
+to create multiple Objects that all share some properties. Rather than type out
+all the properties each time, we can use a _Constructor function_.
 
 ### Creating an Object Using the Constructor Function
 
@@ -119,7 +121,7 @@ function PhraseObjectConstructor(name) {
   this.greeting = `Hello there ${name}!`;
   this.time = () => {
     const currentTime = new Date();
-    return `The time is ${currentTime.getHours()}:${currentTime.getMinutes()}`
+    return `The time is ${currentTime.getHours()}:${currentTime.getMinutes()}`;
   };
 }
 
