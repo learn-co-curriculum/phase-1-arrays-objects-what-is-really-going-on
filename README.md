@@ -1,4 +1,4 @@
-# What's Really Going on With Arrays and Objects in JavaScript?
+# Arrays and Objects - What is Really Going On?
 
 ## Learning Goals
 
