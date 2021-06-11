@@ -287,7 +287,7 @@ However, we'll soon see that you can absolutely use JavaScript as you would use
 other object-oriented languages.
 
 One core concept of object-orientation is the ability to create object
-'classes.' A class can be though of as a template; a blueprint we can use to
+'classes.' A class can be thought of as a template; a blueprint we can use to
 create something from. In object-orientation, the things we create are typically
 referred to as 'instances.' Instances are individual copies of a class that can
 each carry unique information, but contain shared properties that were defined
