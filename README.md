@@ -149,9 +149,10 @@ _return_ anything explicitly (the only `return` is inside the `time` method).
 However, when we run `new PhraseObjectConstructor("Harold")`, we do assign
 _something_ to the `phrases` variable — _an Object_.
 
-One more note: constructor functions start with a capital letter, by convention.
-This is a hint to let other programmers that the function should be used as a
-constructor by using the `new` keyword before calling the function.
+> > *One more note:* Constructor functions start with a capital letter, by
+> > convention. This capitalization is a hint to let other programmers know that
+> > the function should be used as a constructor function, and to add the `new`
+> > keyword before calling the function.
 
 The essential bit in this puzzle is [`new`][new]. Adding `new` before
 `PhraseObjectConstructor("Harold")` tells JavaScript to do a couple of things:
