@@ -55,7 +55,7 @@ expression.
 Now, hold on a moment — we've seen this dot syntax before, but with Arrays:
 
 ```js
-const listOfGoodDogs = ["Peach", "Harpo", "Emma"];
+const listOfGoodDogs = ["Nola", "Spinach", "Diego"];
 
 listOfGoodDogs.map((dog) => console.log(dog));
 // LOG: Peach
