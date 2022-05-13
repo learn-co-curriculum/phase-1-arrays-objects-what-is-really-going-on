@@ -70,10 +70,10 @@ expression.
 
 Why does this work? Well... it is because Arrays _are_ Objects in JavaScript.
 Lots of things are Objects, actually. Notice in the two previous examples, we
-used the dot syntax for other things. In the first code snippet, we assigned a
-`const`, `currentTime`, to `new Date()`, then called `getHours()` and
-`getMinutes()` on it. In the second code snippet, we called `log()` as part of
-`console`.
+used the dot syntax for other things. In the first code snippet, we created a
+`const`, `currentTime`, assigned `new Date()` as its value, then called
+`getHours()` and `getMinutes()` on it. In the second code snippet, we called
+`log()` as part of `console`.
 
 These are all JavaScript Objects — [Arrays][arrays] and other things like
 [`Date`][date] are Objects... even [_Strings_][strings] are Objects, which is
