@@ -58,9 +58,9 @@ Now, hold on a moment — we've seen this dot syntax before, but with Arrays:
 const listOfGoodDogs = ["Nola", "Spinach", "Diego"];
 
 listOfGoodDogs.map((dog) => console.log(dog));
-// LOG: Peach
-// LOG: Harpo
-// LOG: Emma
+// LOG: Nola
+// LOG: Spinach
+// LOG: Diego
 ```
 
 Here, we've called `map` on our array, `listOfGoodDogs`, and passed in a
